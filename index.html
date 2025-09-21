@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Farm Planner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__content container">
+        <h1>เครื่องมือวางแผนการผลิตฟาร์ม</h1>
+        <p>
+          คำนวณผลผลิตที่คาดการณ์ วิเคราะห์ต้นทุน และสร้างไทม์ไลน์สำหรับการปลูกพืชในฟาร์มของคุณได้ภายในไม่กี่คลิก
+        </p>
+        <a class="hero__cta" href="#planner">เริ่มวางแผนทันที</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="planner" class="container planner">
+        <div class="planner__inputs card">
+          <h2>ข้อมูลแปลงและพืช</h2>
+          <label>
+            พื้นที่แปลง (ไร่)
+            <input type="number" id="farm-area" min="0" step="0.1" value="10" />
+          </label>
+          <label>
+            วันที่เริ่มปลูก
+            <input type="date" id="start-date" />
+          </label>
+          <label>
+            เลือกพืชหลัก
+            <select id="crop-select"></select>
+          </label>
+          <label>
+            ราคาเป้าหมายต่อกิโลกรัม (บาท)
+            <input type="number" id="target-price" min="0" step="0.1" value="12" />
+          </label>
+          <div class="checkbox-group">
+            <input type="checkbox" id="organic-mode" />
+            <label for="organic-mode">โหมดอินทรีย์ (ใช้ค่าต่าง ๆ สำหรับเกษตรอินทรีย์)</label>
+          </div>
+        </div>
+
+        <div class="planner__results">
+          <div class="card">
+            <h2>สรุปผลผลิตที่คาดการณ์</h2>
+            <div class="result-grid" id="summary"></div>
+          </div>
+
+          <div class="card">
+            <h2>การวางแผนทรัพยากร</h2>
+            <ul class="resource-list" id="resources"></ul>
+          </div>
+
+          <div class="card">
+            <h2>ไทม์ไลน์กิจกรรมหลัก</h2>
+            <ul class="timeline" id="timeline"></ul>
+          </div>
+
+          <div class="card">
+            <h2>วิเคราะห์ต้นทุน-กำไร</h2>
+            <canvas id="profitChart" height="260"></canvas>
+            <p class="chart-caption" id="profit-remark"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="container insights card">
+        <h2>คำแนะนำจากระบบ</h2>
+        <div id="insights"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>พัฒนาเพื่อช่วยเกษตรกรวางแผนการผลิตอย่างยั่งยืน</p>
+      </div>
+    </footer>
+  </body>
+</html>
